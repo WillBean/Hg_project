@@ -1,0 +1,39 @@
+.main{
+	text-align: center;
+}
+.TimeChoose{
+	width: 70%;
+}
+.CrewMain{
+	margin-top: 40px;
+}
+.StartEnd{
+	text-align: center;
+	padding-left: 10px;
+}
+.StartEnd_1{
+	display: inline-block;
+	width: 30%;
+}
+.StartEnd_2{
+	display: inline-block;
+	width: 30%;
+}
+.StartEnd p{
+	display: inline-block;
+	width: 30%;
+	float: left;
+	line-height: 34px;
+}
+.StartEnd input{
+	display: inline-block;
+	width: 50%;
+}
+.TableShow{
+	display: inline-block;
+	margin-top: 30px;
+	width: 70%;
+}
+.myform{
+	display: inline-block;
+}

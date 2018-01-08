@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>机组特性</title>
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/SetParameters.css">
+	
+</head>
+<body>
+	<div class="body">
+		<div style="postion:relative"class="header navbar-fixed-top">
+		<span>火电厂CO2排放精确计算系统</span>		
+		<div style="position:absolute;right:30px;bottom:-20px"class="time">
+			<span class="year"></span>年<span style="margin-left:0"class="month"></span>月<span style="margin-left:0"class="day"></span>日
+		</div>
+		</div>
+	
+		<div class="select">
+			<div id="menu" class="menu" style="min-height:680px;">
+			<ul>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-home"></span><a href="head.html">系统首页</a></li>
+				<li class="menu_active"><span style="color:#9400D3"class="glyphicon glyphicon-arrow-right"></span><a href="CrewCharacter.html"><span style="font-size:17px;transform:rotate(270deg);" class="glyphicon glyphicon-align-left"></span>机组特性</a></li>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-calendar"></span><a href="CarPrediction.html">Car预测</a></li>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-th-list"></span><a href="EmissionReport.html">排放报表</a></li>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-cog"></span><a href="SetParameters.html">参数设置</a></li>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-gift"></span><a href="C_Dispatch.html">低碳调度</a></li>
+				<li><span style="font-size:17px;transform:rotate(180deg)" class="glyphicon glyphicon-share-alt"></span><a href="index.html">退出系统</a></li>
+			</ul>		
+		    </div>
+		    <div style="float:left;width:75%;margin-top:80px;"class="main">
+		    	<div >
+		    		<!-- Nav tabs -->
+						<ul class="nav nav-tabs" role="tablist">
+						  <li role="presentation" class="active"><a href="#1" role="tab" data-toggle="tab">#1机组</a></li>
+						  <li role="presentation"><a href="#2" role="tab" data-toggle="tab">#2机组</a></li>
+						  <li role="presentation"><a href="#3" role="tab" data-toggle="tab">#3机组</a></li>
+						  <li role="presentation"><a href="#4" role="tab" data-toggle="tab">#4机组</a></li>
+						
+						</ul>
+		    	</div>
+		    <div id="myTabContent"class="tab-content">
+		    	<div style="padding:20px;" class="tab-pane fade in active" id="1">
+		    		<div style="overflow:hidden">
+		    			<div style="overflow:hidden;float:left;margin-right:20px;">
+		    				<label style="float:left;line-height: 34px;">发电功率:</label><input id="p1"style="width:100px;float:left" type="text" class="form-control"><span style="float:left;line-height: 34px;">MW</span>
+		    			</div>
+		    			<div style="overflow:hidden;float:left">
+		    				<label style="float:left;line-height: 34px;">发电煤耗:</label><input id="bs1"style="width:100px;float:left" type="text" class="form-control"><span style="float:left;line-height: 34px;">g/KWh</span>
+		    			</div>    			
+		    		</div>
+		    		<div id="container" style="width:800px;min-width:400px;height:250px">
+		    			
+		    		</div>
+		    		<div>
+		    			<table id="1_table" class="table table-condensed">
+		    				<thead>
+		    					<tr>
+		    						<th>煤种</th>
+		    						<th>Car(%)</th>
+		    						<th>Aar(%)</th>
+		    						<th>Ca(%)</th>
+		    						<th>Qar,net(kJ/Kg)</th>
+		    						<th>精确计算(kg/s)</th>
+		    						<th>IPCC法(kg/s)</th>
+		    					</tr>		    					
+		    				</thead>
+		    				<tbody>
+		    					<tr>
+		    						<td><div class="btn-group">
+								<button id="Coal1_value"type="button" class="btn btn-default dropdown-toggle coal_button" 
+										data-toggle="dropdown">
+									煤种 <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu coal" role="menu">
+																			
+								</ul>
+							</div></td>
+							<td><input id="Car1_value"type="text" class="form-control"></td>
+							<td><input id="Aar1_value"type="text" class="form-control"></td>
+							<td><input id="Ca1_value"type="text" class="form-control"></td>
+							<td><input id="Qar1_value"type="text" class="form-control"></td>
+							<td><input id="mco21_value"type="text" class="form-control" readonly="readonly"></td>
+							<td><input id="ipcc1_value"type="text" class="form-control" readonly="readonly"></td>
+		    					</tr>
+		    				</tbody>
+		    				<tfoot>		    					
+		    						<td><button class="btn btn-info add">添加</button></td>		  		    				
+		    						<td></td>
+		    						<td></td>
+		    						<td></td>
+		    						<td></td>
+		    						<td><button class="btn btn-default calculate1">计算</button></td>
+		    				</tfoot>
+		    			</table>
+		    		</div>
+		    		<div id="resultcontainer"style="width:800px;min-width:400px;height:250px">
+		    		
+		    		</div>
+		    	</div>
+		    	<div  style="padding:20px;"class="tab-pane fade " id="2">
+		    		<div style="overflow:hidden">
+		    			<div style="overflow:hidden;float:left;margin-right:20px;">
+		    				<label style="float:left;line-height: 34px;">发电功率:</label><input id="p2"style="width:100px;float:left" type="text" class="form-control"><span style="float:left;line-height: 34px;">MW</span>
+		    			</div>
+		    			<div style="overflow:hidden;float:left">
+		    				<label style="float:left;line-height: 34px;">发电煤耗:</label><input id="bs2"style="width:100px;float:left" type="text" class="form-control"><span style="float:left;line-height: 34px;">g/KWh</span>
+		    			</div>    			
+		    		</div>
+		    		<div id="container2" style="width:800px;min-width:400px;height:250px">
+		    			
+		    		</div>
+		    		<div>
+		    			<table id="2_table" class="table table-condensed">
+		    				<thead>
+		    					<tr>
+		    						<th>煤种</th>
+		    						<th>Car(%)</th>
+		    						<th>Aar(%)</th>
+		    						<th>Ca(%)</th>
+		    						<th>Qar,net(kJ/Kg)</th>
+		    						<th>精确计算(kg/s)</th>
+		    						<th>IPCC法(kg/s)</th>
+		    					</tr>		    					
+		    				</thead>
+		    				<tbody>
+		    					<tr>
+		    						<td><div class="btn-group">
+								<button id="Coal2_value"type="button" class="btn btn-default dropdown-toggle coal_button" 
+										data-toggle="dropdown">
+									煤种 <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu coal" role="menu">
+																			
+								</ul>
+							</div></td>
+							<td><input id="Car2_value"type="text" class="form-control"></td>
+							<td><input id="Aar2_value"type="text" class="form-control"></td>
+							<td><input id="Ca2_value"type="text" class="form-control"></td>
+							<td><input id="Qar2_value"type="text" class="form-control"></td>
+							<td><input id="mco22_value"type="text" class="form-control" readonly="readonly"></td>
+							<td><input id="ipcc2_value"type="text" class="form-control" readonly="readonly"></td>
+		    					</tr>
+		    				</tbody>
+		    				<tfoot>		    					
+		    						<td><button class="btn btn-info add">添加</button></td>		  		    				
+		    						<td></td>
+		    						<td></td>
+		    						<td></td>
+		    						<td></td>
+		    						<td><button class="btn btn-default calculate2">计算</button></td>
+		    				</tfoot>
+		    			</table>
+		    		</div>
+		    		<div id="resultcontainer2"style="width:800px;min-width:400px;height:250px">
+		    		
+		    		</div>
+		    	</div>
+		    	<div style="padding:20px;" class="tab-pane fade " id="3">
+		    	<div style="overflow:hidden">
+		    			<div style="overflow:hidden;float:left;margin-right:20px;">
+		    				<label style="float:left;line-height: 34px;">发电功率:</label><input id="p3"style="width:100px;float:left" type="text" class="form-control"><span style="float:left;line-height: 34px;">MW</span>
+		    			</div>
+		    			<div style="overflow:hidden;float:left">
+		    				<label style="float:left;line-height: 34px;">发电煤耗:</label><input id="bs3"style="width:100px;float:left" type="text" class="form-control"><span style="float:left;line-height: 34px;">g/KWh</span>
+		    			</div>    			
+		    		</div>
+		    		<div id="container3" style="width:800px;min-width:400px;height:250px">
+		    			
+		    		</div>
+		    		<div>
+		    			<table id="3_table" class="table table-condensed">
+		    				<thead>
+		    					<tr>
+		    						<th>煤种</th>
+		    						<th>Car(%)</th>
+		    						<th>Aar(%)</th>
+		    						<th>Ca(%)</th>
+		    						<th>Qar,net(kJ/Kg)</th>
+		    						<th>精确计算(kg/s)</th>
+		    						<th>IPCC法(kg/s)</th>
+		    					</tr>		    					
+		    				</thead>
+		    				<tbody>
+		    					<tr>
+		    						<td><div class="btn-group">
+								<button id="Coal3_value"type="button" class="btn btn-default dropdown-toggle coal_button" 
+										data-toggle="dropdown">
+									煤种 <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu coal" role="menu">
+																			
+								</ul>
+							</div></td>
+							<td><input id="Car3_value"type="text" class="form-control"></td>
+							<td><input id="Aar3_value"type="text" class="form-control"></td>
+							<td><input id="Ca3_value"type="text" class="form-control"></td>
+							<td><input id="Qar3_value"type="text" class="form-control"></td>
+							<td><input id="mco23_value"type="text" class="form-control" readonly="readonly"></td>
+							<td><input id="ipcc3_value"type="text" class="form-control" readonly="readonly"></td>
+		    					</tr>
+		    				</tbody>
+		    				<tfoot>		    					
+		    						<td><button class="btn btn-info add">添加</button></td>		  		    				
+		    						<td></td>
+		    						<td></td>
+		    						<td></td>
+		    						<td></td>
+		    						<td><button class="btn btn-default calculate3">计算</button></td>
+		    				</tfoot>
+		    			</table>
+		    		</div>
+		    		<div id="resultcontainer3"style="width:800px;min-width:400px;height:250px">
+		    		
+		    		</div>
+		    	</div>
+		    	<div  style="padding:20px;"class="tab-pane fade " id="4">
+		   			 <div style="overflow:hidden">
+		    			<div style="overflow:hidden;float:left;margin-right:20px;">
+		    				<label style="float:left;line-height: 34px;">发电功率:</label><input id="p4" style="width:100px;float:left" type="text" class="form-control"><span style="float:left;line-height: 34px;">MW</span>
+		    			</div>
+		    			<div style="overflow:hidden;float:left">
+		    				<label style="float:left;line-height: 34px;">发电煤耗:</label><input id="bs4"style="width:100px;float:left" type="text" class="form-control"><span style="float:left;line-height: 34px;">g/KWh</span>
+		    			</div>    			
+		    		</div>
+		    		<div id="container4" style="width:800px;min-width:400px;height:250px">
+		    			
+		    		</div>
+		    		<div>
+		    			<table id="4_table" class="table table-condensed">
+		    				<thead>
+		    					<tr>
+		    						<th>煤种</th>
+		    						<th>Car(%)</th>
+		    						<th>Aar(%)</th>
+		    						<th>Ca(%)</th>
+		    						<th>Qar,net(kJ/Kg)</th>
+		    						<th>精确计算(kg/s)</th>
+		    						<th>IPCC法(kg/s)</th>
+		    					</tr>		    					
+		    				</thead>
+		    				<tbody>
+		    					<tr>
+		    						<td><div class="btn-group">
+								<button id="Coal4_value"type="button" class="btn btn-default dropdown-toggle coal_button" 
+										data-toggle="dropdown">
+									煤种 <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu coal" role="menu">
+																			
+								</ul>
+							</div></td>
+							<td><input id="Car4_value"type="text" class="form-control"></td>
+							<td><input id="Aar4_value"type="text" class="form-control"></td>
+							<td><input id="Ca4_value"type="text" class="form-control"></td>
+							<td><input id="Qar4_value"type="text" class="form-control"></td>
+							<td><input id="mco24_value"type="text" class="form-control" readonly="readonly"></td>
+							<td><input id="ipcc4_value"type="text" class="form-control" readonly="readonly"></td>
+		    					</tr>
+		    				</tbody>
+		    				<tfoot>		    					
+		    						<td><button class="btn btn-info add">添加</button></td>		    				
+		    						<td></td>
+		    						<td></td>
+		    						<td></td>
+		    						<td></td>
+		    						<td><button class="btn btn-default calculate4">计算</button></td>
+		    				</tfoot>
+		    			</table>
+		    		</div>
+		    		<div id="resultcontainer4"style="width:800px;min-width:400px;height:250px">
+		    		
+		    		</div>
+		  	    </div>
+		    
+		    	
+		    </div>
+			
+		</div>
+		
+<script type="text/javascript" src="js/jquery.min.js"></script>	
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/publicDom.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript" src="js/exporting.js"></script>
+<script type="text/javascript" src="js/tableExport.js"></script>
+<script type="text/javascript" src="js/CrewCharacter.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/CarPrediciton.css">
+	<link rel="stylesheet" type="text/css" href="css/skin/layer.css">
+	<title>Car预测</title>
+</head>
+<body >
+	<div class="body" style="min-width:475px;">
+		<div class="header navbar-fixed-top">
+			<span>火电厂CO2排放精确计算系统</span>	
+			<div style="position:absolute;right:30px;bottom:-20px"class="time">
+			<span class="year"></span>年<span style="margin-left:0"class="month"></span>月<span style="margin-left:0"class="day"></span>日
+		</div>	
+		</div>
+
+		<div class="select">
+			<div id="menu" class="menu" style="min-height:680px;">
+			<ul>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-home"></span><a href="head.html">系统首页</a></li>
+				<li></span><a href="CrewCharacter.html"><span style="font-size:17px;transform:rotate(270deg);" class="glyphicon glyphicon-align-left"></span>机组特性</a></li>
+				<li class="menu_active"><span style="color:#9400D3"class="glyphicon glyphicon-arrow-right"></span><span style="font-size:17px;" class="glyphicon glyphicon-calendar"></span><a href="CarPrediction.html">Car预测</a></li>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-th-list"></span><a href="EmissionReport.html">排放报表</a></li>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-cog"></span><a href="SetParameters.html">参数设置</a></li>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-gift"></span><a href="C_Dispatch.html">低碳调度</a></li>
+				<li><span style="font-size:17px;transform:rotate(180deg)" class="glyphicon glyphicon-share-alt"></span><a href="index.html">退出系统</a></li>
+			</ul>		
+		    </div>
+			<div style="float:left;width:85%;margin-top:100px;padding-left:60px" class="main">
+				<div class="row">
+					<div class="col-md-6">
+						<label style="line-height:50px;margin-bottom:30px;color:#ADADAD;">请在下方输入工业分析数据...</label>
+					</div>
+				</div>
+				<div class="row" style="height:90px;">
+					<div class="col-md-6" style="padding-right:0px;">
+						<label style="float:left;padding-right:10px;">Mar-燃料收到基的水分</label>
+						<input type="text" style="float:left;width:30%;" class="form-control">
+						<b>%</b>
+					</div>
+					<div class="col-md-6" >
+						<label style="float:left;padding-right:10px;">V-挥发分</label>
+						<div class="btn-group" style="float:left;margin-left:45px;">
+							<button id="choose" type="button" class="btn btn-info dropdown-toggle baselevel" data-toggle="dropdown">收到基</button>
+							<ul class="dropdown-menu bs" role="menu">
+								<li><a href="#">收到基</a></li>
+								<li><a href="#">干燥基</a></li>
+								<li><a href="#">空气干燥基</a></li>
+								<li><a href="#">干燥无灰基</a></li>
+							</ul>
+						</div>
+						<input type="text" style="float:left;width:30%;" class="form-control"><b>%</b>
+					</div>
+				</div>	
+				<div class="row" style="height:90px;">
+					<div class="col-md-6" style="padding-right:0px;">
+						<label style="float:left;padding-right:20px;">Mad-空气干燥基水分</label>
+						<input type="text" style="float:left;width:30%;" class="form-control">
+						<b>%</b>
+					</div>
+					<div class="col-md-6" >
+						<label style="float:left;padding-right:10px;">A-灰分</label>
+						<div class="btn-group" style="float:left;margin-left:57px;">
+							<button id="choose" type="button" class="btn btn-info dropdown-toggle baselevel" data-toggle="dropdown">收到基</button>
+							<ul class="dropdown-menu bs" role="menu">
+								<li><a href="#">收到基</a></li>
+								<li><a href="#">干燥基</a></li>
+								<li><a href="#">空气干燥基</a></li>
+							</ul>
+						</div>
+						<input type="text" style="float:left;width:30%;" class="form-control"><b>%</b>
+					</div>
+				</div>	
+				<div class="row" style="height:90px;">
+					<div class="col-md-6" style="padding-right:0px;">
+					</div>
+					<div class="col-md-6" >
+						<label style="float:left;padding-right:10px;">Q-热值/发热量</label>
+						<div class="btn-group dropdown" style="float:left;">
+							<button id="choose_bit" type="button" class="btn btn-success dropdown-toggle baselevel" data-toggle="dropdown" style="margin-left:3px;">低位</button>
+							<ul class="dropdown-menu bs" role="menu">
+								<li><a href="#">高位</a></li>
+								<li><a href="#">低位</a></li>
+							</ul>
+						</div>
+						<div class="btn-group" style="float:left;">
+							<button id="choose" type="button" class="btn btn-info dropdown-toggle baselevel" data-toggle="dropdown">收到基</button>
+							<ul class="dropdown-menu bs" role="menu">
+								<li><a href="#">收到基</a></li>
+								<li><a href="#">干燥基</a></li>
+								<li><a href="#">空气干燥基</a></li>
+								<li><a href="#">干燥无灰基</a></li>
+							</ul>
+						</div>
+						<input type="text" style="float:left;width:18%;" class="form-control"><b>KJ/KG</b>
+					</div>
+				</div>
+				<div class="row" style="height:90px;margin-top:20px;">
+					<div class="col-md-6" style="padding-right:0px;">
+					</div>
+					<div class="col-md-6 result" >
+						<label style="float:left;color:#A23400;padding-right:2px;">燃煤含碳量-Car</label>
+						<button class="btn btn-danger caculate" style="float:left;" data-toggle="tooltip" data-placement="right" title="进行Car(煤的收到基含碳量)预测">预测结果</button>
+						<input type="text" class="form-control " readonly="readonly" style="float:left;width:33%;margin-left:2px;"><b>%</b>
+					</div>
+				</div>		
+
+		</div>
+			</div>
+		</div>
+	</div>
+
+
+
+				<script type="text/javascript" src="js/jquery.min.js"></script>	
+				<script type="text/javascript" src="js/bootstrap.min.js"></script>
+				<script type="text/javascript" src="js/publicDom.js"></script>
+				<script type="text/javascript" src="js/CarPrediction.js"></script>
+				<script type="text/javascript" src="js/layer.js"></script>
+			</body>
+			</html>

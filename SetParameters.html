@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>参数设置</title>
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/SetParameters.css">
+	<link rel="stylesheet" type="text/css" href="css/skin/layer.css">
+	
+</head>
+<body>
+	<div class="body">
+		<div style="postion:relative"class="header navbar-fixed-top">
+		<span>火电厂CO2排放精确计算系统</span>		
+		<div style="position:absolute;right:30px;bottom:-20px"class="time">
+			<span class="year"></span>年<span style="margin-left:0"class="month"></span>月<span style="margin-left:0"class="day"></span>日
+		</div>
+		</div>
+	
+		<div class="select">
+			<div id="menu" class="menu" style="min-height:680px;">
+			<ul>
+				<li></span><span style="font-size:17px;" class="glyphicon glyphicon-home"></span><a href="head.html">系统首页</a></li>
+				<li ><a href="CrewCharacter.html"><span style="font-size:17px;transform:rotate(270deg);" class="glyphicon glyphicon-align-left"></span>机组特性</a></li>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-calendar"></span><a href="CarPrediction.html">Car预测</a></li>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-th-list"></span><a href="EmissionReport.html">排放报表</a></li>
+				<li class="menu_active"><span style="color:#9400D3"class="glyphicon glyphicon-arrow-right"></span><span style="font-size:17px;" class="glyphicon glyphicon-cog"></span><a href="SetParameters.html">参数设置</a></li>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-gift"></span><a href="C_Dispatch.html">低碳调度</a></li>
+				<li><span style="font-size:17px;transform:rotate(180deg)" class="glyphicon glyphicon-share-alt"></span><a href="index.html">退出系统</a></li>
+			</ul>		
+		    </div>
+		    <div style="float:left;width:75%;margin-top:80px;"class="main">
+		    	<div >
+		    		<!-- Nav tabs -->
+						<ul class="nav nav-tabs" role="tablist">
+						  <li role="presentation" class="active"><a href="#1" role="tab" data-toggle="tab">#1机组</a></li>
+						  <li role="presentation"><a href="#2" role="tab" data-toggle="tab">#2机组</a></li>
+						  <li role="presentation"><a href="#3" role="tab" data-toggle="tab">#3机组</a></li>
+						  <li role="presentation"><a href="#4" role="tab" data-toggle="tab">#4机组</a></li>
+						  <li role="presentation"><a href="#Coal" role="tab" data-toggle="tab">全厂煤种参数</a></li>
+						  <li role="presentation"><a href="#beq" role="tab" data-toggle="tab">全厂总负荷</a></li>
+						</ul>
+		    	</div>
+		    <div id="myTabContent"class="tab-content">
+		    	
+		    	<div class="tab-pane fade in active" id="1">
+		    		<h3 style="margin-left:20px;">机组性能曲线多项式:y=a*x*x+b*x+c</h3>
+		    		<div style="padding:20px;overflow:hidden">
+		    			<h4 style="float:left;margin-right:10px;">a</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="1_a"class="form-control">
+		    			<h4 style="float:left;margin-right:10px;">b</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="1_b"class="form-control">
+		    			<h4 style="float:left;margin-right:10px;">c</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="1_c"class="form-control">
+		    				    			
+		    			<h4 style="float:left;margin-right:10px;">飞灰含碳量Ca(%)</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="1_ca"class="form-control">	    
+		    			
+		    		</div>
+		    		<div  style="padding:20px;overflow:hidden">
+		    			<h4 style="float:left;margin-right:10px;">功率上限(MW)</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="1_up"class="form-control">
+		    			<h4 style="float:left;margin-right:10px;">功率下限(MW)</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="1_low"class="form-control">
+		    			<button style="float:left"class="btn btn-success" id="save_1">保存</button>		
+		    		</div>
+		    	</div>
+		    	<div class="tab-pane fade " id="2">
+		    		<h3 style="margin-left:20px;">机组性能曲线多项式:y=a*x*x+b*x+c</h3>
+		    		<div style="padding:20px;overflow:hidden">
+		    			<h4 style="float:left;margin-right:10px;">a</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="2_a"class="form-control">
+		    			<h4 style="float:left;margin-right:10px;">b</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="2_b"class="form-control">
+		    			<h4 style="float:left;margin-right:10px;">c</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="2_c"class="form-control">
+		    		
+		    			<h4 style="float:left;margin-right:10px;">飞灰含碳量Ca(%)</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="2_ca"class="form-control">	  
+		    			
+		    		</div>
+		    		<div  style="padding:20px;overflow:hidden">
+		    			<h4 style="float:left;margin-right:10px;">功率上限(MW)</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="2_up"class="form-control">
+		    			<h4 style="float:left;margin-right:10px;">功率下限(MW)</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="2_low"class="form-control">
+		    			<button style="float:left"class="btn btn-success" id="save_2">保存</button>		
+		    		</div>
+		    	</div>
+		    	<div class="tab-pane fade " id="3">
+		    	<h3 style="margin-left:20px;">机组性能曲线多项式:y=a*x*x+b*x+c</h3>
+		    		<div style="padding:20px;overflow:hidden">
+		    			<h4 style="float:left;margin-right:10px;">a</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="3_a"class="form-control">
+		    			<h4 style="float:left;margin-right:10px;">b</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="3_b"class="form-control">
+		    			<h4 style="float:left;margin-right:10px;">c</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="3_c"class="form-control">
+		    			
+		    			<h4 style="float:left;margin-right:10px;">飞灰含碳量Ca(%)</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="3_ca"class="form-control">	  
+		    			
+		    		</div>
+		    		<div  style="padding:20px;overflow:hidden">
+		    			<h4 style="float:left;margin-right:10px;">功率上限(MW)</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="3_up"class="form-control">
+		    			<h4 style="float:left;margin-right:10px;">功率下限(MW)</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="3_low"class="form-control">
+		    			<button style="float:left"class="btn btn-success" id="save_3">保存</button>		
+		    		</div>
+		    	</div>
+		    	<div class="tab-pane fade " id="4">
+		    		<h3 style="margin-left:20px;">机组性能曲线多项式:y=a*x*x+b*x+c</h3>
+		    		<div style="padding:20px;overflow:hidden">
+		    			<h4 style="float:left;margin-right:10px;">a</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="4_a"class="form-control">
+		    			<h4 style="float:left;margin-right:10px;">b</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="4_b"class="form-control">
+		    			<h4 style="float:left;margin-right:10px;">c</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="4_c"class="form-control">
+		    			
+		    			<h4 style="float:left;margin-right:10px; ">飞灰含碳量Ca(%)</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="4_ca"class="form-control">	  
+		    			
+		    		</div>
+		    		<div  style="padding:20px;overflow:hidden">
+		    			<h4 style="float:left;margin-right:10px;">功率上限(MW)</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="4_up"class="form-control">
+		    			<h4 style="float:left;margin-right:10px;">功率下限(MW)</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="4_low"class="form-control">
+		    			<button style="float:left"class="btn btn-success" id="save_4">保存</button>		
+		    		</div>
+		    	</div>
+		    	<div class="tab-pane fade " id="Coal">
+		    		<h3 style="margin-left:20px;">常用煤种设置</h3>
+		    		<div style="padding:20px;">
+			    		<table class="table table-condensed">
+			    			<thead>
+			    			<tr>
+			    				<th></th>
+			    				<th>煤种名称</th>
+			    				<th>Mar(%)</th>
+			    				<th>Mad(%)</th>
+			    				<th>A(%)</th>
+			    				<th>V(%)</th>
+			    				<th>Q(KJ/Kg)</th>
+			    				<th>Car(%)</th>
+			    				<th>Aar(%)</th>
+			    				<th>Qarnet(KJ/Kg)</th>
+			    			</tr>
+			    			</thead>
+			    			<tbody>
+			    				<tr>
+			    					<td></td>
+			    					<td></td>
+			    					<td></td>
+			    					<td></td>
+			    					<td><div class="btn-group">
+								<button id="A_name"type="button" class="btn btn-default dropdown-toggle coal_button" 
+										data-toggle="dropdown">
+									收到基 <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu coal" role="menu">
+									<li><a href="#">空气干燥基</a></li>
+									<li><a href="#">干燥基</a></li>		
+									<li><a href="#">收到基</a></li>												
+								</ul>
+							</div></td>
+			    					<td><div class="btn-group">
+								<button id="V_name" type="button" class="btn btn-default dropdown-toggle coal_button" 
+										data-toggle="dropdown">
+									收到基 <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu coal" role="menu">
+									<li><a href="#">空气干燥基</a></li>
+									<li><a href="#">干燥基</a></li>		
+									<li><a href="#">干燥无灰基</a></li>		
+									<li><a href="#">收到基</a></li>												
+								</ul>
+							</div></td>
+			    					<td><div class="btn-group">
+								<button id="Q_name"type="button" class="btn btn-default dropdown-toggle coal_button" 
+										data-toggle="dropdown">
+									收到基 <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu coal" role="menu">
+									<li><a href="#">空气干燥基</a></li>
+									<li><a href="#">干燥基</a></li>		
+									<li><a href="#">干燥无灰基</a></li>		
+									<li><a href="#">收到基</a></li>												
+								</ul>
+							</div><div class="btn-group">
+								<button id="Q_position"type="button" class="btn btn-default dropdown-toggle coal_button" 
+										data-toggle="dropdown">
+									低位 <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu coal" role="menu">
+									<li><a href="#">低位</a></li>
+									<li><a href="#">高位</a></li>												
+								</ul>
+							</div></td>
+			    					<td></td>
+			    				</tr>
+			    				<tr>
+			    					<td>1</td>
+			    					<td><input type="text" class="form-control"></td>
+			    					<td><input type="text" class="form-control"></td>
+			    					<td><input type="text" class="form-control"></td>
+			    					<td><input type="text" class="form-control"></td>
+			    					<td><input type="text" class="form-control"></td>
+			    					<td><input type="text" class="form-control"></td>
+			    					<td><input type="text" class="form-control" readonly="readonly"></td>
+			    					<td><input type="text" class="form-control" readonly="readonly"></td>
+			    					<td><input type="text" class="form-control" readonly="readonly"></td>
+
+			    				</tr>
+			    			</tbody>
+			    			<tfoot>
+			    				<td></td>
+			    				<td></td>
+			    				<td></td>
+			    				<td></td>
+			    				<td></td>
+			    				<td></td>
+			    				<td><button class="btn btn-success" id="add"><span class="glyphicon glyphicon-plus">增加单元格</button></td>
+			    				<td><button class="btn btn-danger" id="delete"><span class="glyphicon glyphicon-minus">删除单元格</button></td>
+			    				<td><button class="btn btn-info" id="calculate">计算结果</button></td>
+			    				<td><button class="btn btn-primary" id="Save_coal">保存结果</button></td>
+			    			</tfoot>
+			    		</table>
+		    		</div>
+		    		
+		    	</div>
+		    	<div class="tab-pane fade in " id="beq">
+					<h3 style="margin-left:20px;">输入全厂总负荷(MW)</h3>
+		    		<div style="padding:20px;overflow:hidden">    				    			
+		    			<h4 style="float:left;margin-right:10px;">输入全厂总负荷</h4><input style="width:100px;float:left;margin-right:10px;" type='text' id="beq_value"class="form-control">	    
+		    			<button style="float:left"class="btn btn-success" id="save_beq">保存</button>	
+		    		</div>
+		    	</div>
+		    </div>
+		    
+		    	
+		    </div>
+			
+		</div>
+		
+<script type="text/javascript" src="js/jquery.min.js"></script>	
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/publicDom.js"></script>
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript" src="js/exporting.js"></script>
+<script type="text/javascript" src="js/tableExport.js"></script>
+<script type="text/javascript" src="js/SetParameters.js"></script>
+<script type="text/javascript" src="js/layer.js"></script>
+</body>
+</html>

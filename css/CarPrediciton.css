@@ -1,0 +1,12 @@
+b{
+	padding: 3px;
+	line-height: 30px;
+	float: left;
+}
+label {
+	color: #003E3E;
+	float: left;
+	text-align: left;
+	line-height: 30px;
+	font-size: 1.2em;
+}

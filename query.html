@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>query</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/query.css">
+</head>
+<body>
+	<div class="header navbar-fixed-top">
+		<span>计算工具</span>		
+	</div>
+	<div class="select">
+		<div id="menu" class="menu" style="min-height:680px;">
+		<ul>
+			<li><a href="carbononline.html">C02实时计算</a></li>
+			<li><a href="carboncaluteday.html">C02日计算</a></li>
+			<li><a href="carboncaluteyear.html">C02年计算</a></li>
+			<li><a href="ipcc.html">IPCC法核算</a></li>
+			<li><a href="query.html">控排企业配额查询</a></li>
+			<li><a href="history_query.html">历史记录查询</a></li>
+		</ul>	
+	</div>
+	<div class="query_main">
+		<div class="query_main_1">
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label for="firstname" class="col-sm-2 control-label">电厂</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control eVal"  placeholder="请选择电厂" data-target="#select"  data-toggle="modal">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="firstname" class="col-sm-2 control-label">机组编号</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control jizhuVal"  placeholder="请选择机组编号" data-target="#select2"  data-toggle="modal">
+					</div>
+				</div>
+				<div class="form-group">
+					<label  class="col-sm-2 control-label">当年查询</label>			
+					<div class="dropdown col-md-10">
+					  <button class="btn btn-default dropdown-toggle" type="button" id="year_list" data-toggle="dropdown">
+					    <span class="yeardetial"></span>
+					    <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu yList" role="menu" aria-labelledby="year_list">
+					    <li><a href="#">2011年</a></li>
+					    <li><a href="#">2012年</a></li>
+					    <li><a href="#">2013年</a></li>
+					    <li><a href="#">2014年</a></li>
+					    <li><a href="#">2015年</a></li>
+					    <li><a href="#">2016年</a></li>
+					  </ul>
+					</div>
+				</div>
+				<div class="form-group">
+					<label  class="col-sm-2 control-label">当月查询</label>			
+					<div class="dropdown col-md-10">
+					  <button class="btn btn-default dropdown-toggle" type="button" id="month_list" data-toggle="dropdown">
+					    <span class="monthdetial">1月</span>
+					    <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu mList" role="menu" aria-labelledby="month_list">
+					    <li><a href="#">1月</a></li>
+					    <li><a href="#">2月</a></li>
+					    <li><a href="#">3月</a></li>
+					    <li><a href="#">4月</a></li>
+					    <li><a href="#">5月</a></li>
+					    <li><a href="#">6月</a></li>
+					    <li><a href="#">7月</a></li>
+					    <li><a href="#">8月</a></li>
+					    <li><a href="#">9月</a></li>
+					    <li><a href="#">10月</a></li>
+					    <li><a href="#">11月</a></li>
+					    <li><a href="#">12月</a></li>
+					  </ul>
+					</div>
+				</div>
+			</form>
+			<button type="button" class="btn btn-primary pull-right Query" data-toggle="modal" data-target="#result">查询</button>
+		<div>
+	</div>
+<!-- 电厂选择 -->
+<div class="modal fade" id="select" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel" >
+					请选择电厂
+				</h4>
+			</div>
+			<div class="modal-body">
+				<ul class="eList" style="height:300px; overflow:scroll;">
+					
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 机组编号选择 -->
+<div class="modal fade" id="select2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					请选择机组编号
+				</h4>
+			</div>
+			<div class="modal-body">
+				<ul class="jizhuList">
+					
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 计算结果窗口 -->
+<div class="modal fade" id="result" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					查询结果
+				</h4>
+			</div>
+			<div class="modal-body">
+				<label class="col-sm-3">发电量</label>
+				<input type="text" class="form-control fadianliang"/>x10^8kWh
+				<label class="col-sm-3" style="margin-top:15px;">碳排放配额</label>
+				<input type="text" class="form-control co2paifan"/>t
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>	
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/publicDom.js"></script>
+	<script type="text/javascript" src="js/query.js"></script>
+</body>
+</html>

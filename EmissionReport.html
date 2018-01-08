@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>排放报表</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/EmissionReport.css">
+</head>
+<body>
+	<div style="postion:relative"class="header navbar-fixed-top">
+		<span>火电厂CO2排放精确计算系统</span>		
+		<div style="position:absolute;right:30px;bottom:-20px"class="time">
+			<span class="year"></span>年<span style="margin-left:0" class="month"></span>月<span style="margin-left:0"class="day"></span>日
+		</div>
+	</div>
+	
+	<div class="select">
+		<div id="menu" class="menu" style="min-height:680px;">
+			<ul>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-home"></span><a href="head.html">系统首页</a></li>
+				<li><a href="CrewCharacter.html"><span style="font-size:17px;transform:rotate(270deg);" class="glyphicon glyphicon-align-left"></span>机组特性</a></li>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-calendar"></span><a href="CarPrediction.html">Car预测</a></li>
+				<li class="menu_active"><span style="color:#9400D3"class="glyphicon glyphicon-arrow-right"></span><a href="EmissionReport.html"><span style="font-size:17px;" class="glyphicon glyphicon-th-list"></span></span>排放报表</a></li>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-cog"></span><a href="SetParameters.html">参数设置</a></li>
+				<li><span style="font-size:17px;" class="glyphicon glyphicon-gift"></span><a href="C_Dispatch.html">低碳调度</a></li>
+				<li><span style="font-size:17px;transform:rotate(180deg)" class="glyphicon glyphicon-share-alt"></span><a href="index.html">退出系统</a></li>
+			</ul>		
+		</div>
+	   	<div style="float:left;width:83%;margin-top:80px;" class="main">
+		   <div >
+				<ul class="nav nav-tabs" role="tablist">
+				  <li class="active"><a href="#1" role="tab" data-toggle="tab">#1机组</a></li>
+				  <li><a href="#2" role="tab" data-toggle="tab">#2机组</a></li>
+				  <li><a href="#3" role="tab" data-toggle="tab">#3机组</a></li>
+				  <li><a href="#4" role="tab" data-toggle="tab">#4机组</a></li>			
+				</ul>
+	    	</div>
+			<div id="myTabContent" class="tab-content">
+				<!-- 机组1 -->
+				<div class="tab-pane fade in active" id="1">
+					<!-- 机组1时间选择 -->
+					<div class="TimeChoose">
+						<ul class="nav nav-pills nav-justified TimeList" role="tablist">
+							<li class="active"><a href="#day1" role="tab" data-toggle="tab">日排放报表</a></li>
+							<li><a href="#month1" role="tab" data-toggle="tab">月排放报表</a></li>
+							<li><a href="#year1" role="tab" data-toggle="tab">年排放报表</a></li>
+						</ul>
+					</div>
+					<!-- 机组1正文 -->
+					<div id="myTabContent1" class="tab-content">
+						<!-- 日 -->
+						<div class="tab-pane fade in active" id="day1">
+							<div class="CrewMain">
+								<!-- 时间选择 -->
+								<div class="StartEnd">
+									<div class="StartEnd_1">
+										<p>请输入开始时间</p>
+										<input type="date" class="form-control Daystart1">							
+										<input type="text" class="form-control DaystartTime1" placeholder="14:14:00">
+									</div>
+									<div class="StartEnd_2">
+										<p>请输入结束时间</p>
+										<input type="date" class="form-control Dayend1">	
+										<input type="text" class="form-control DayendTime1" placeholder="14:15:10">
+									</div>
+									<div class="btn-group">
+										<button id="Coal1_value" type="button" class="btn btn-default dropdown-toggle coal_button Day1Coal" data-toggle="dropdown">烟煤<span class="caret"></span></button>
+										<ul class="dropdown-menu coal" role="menu">
+																
+										</ul>
+									</div>
+									<button type="button" class="btn btn-info DayQuery1">查询</button>
+								</div>
+								<!-- 表格 -->
+								<div class="table-responsive TableShow">						
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th></th>
+												<th>开始时间</th>
+												<th>截止时间</th>
+												<th>发电量(kWh)</th>
+												<th>燃煤量(t)</th>
+												<th>CO2排放量(t)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>精确模型</td>
+												<td class="Day1start"></td>
+												<td class="Day1end"></td>
+												<td class="Day1jinquekwh"></td>
+												<td class="Day1jinquet"></td>
+												<td class="Day1jinqueco2"></td>
+											</tr>
+											<tr>
+												<td>IPCC</td>
+												<td class="Day1start"></td>
+												<td class="Day1end"></td>
+												<td class="Day1IPCCkwh"></td>
+												<td class="Day1IPCCt"></td>
+												<td class="Day1IPCCco2"></td>
+											</tr>
+										</tbody>
+									</table>
+									<button type="button" class="btn btn-default pull-right Day1Out">导出excel</button>
+								</div>
+							</div>
+						</div>
+						<!-- 月 -->
+						<div class="tab-pane fade" id="month1">
+							<div class="CrewMain">
+								<!-- 时间选择 -->
+								<div class="StartEnd">
+									<div class="StartEnd_1">
+										<p>请选择开始时间</p>
+										<input type="date" class="form-control Month1Start">
+									</div>
+									<div class="StartEnd_2">
+										<p>请选择截止时间</p>
+										<input type="date" class="form-control Month1End">
+									</div>
+									<div class="btn-group">
+										<button id="Coal1_value" type="button" class="btn btn-default dropdown-toggle coal_button Month1Coal" data-toggle="dropdown">无烟煤<span class="caret"></span></button>
+										<ul class="dropdown-menu coal" role="menu">
+																
+										</ul>
+									</div>
+									<button type="button" class="btn btn-info Month1Query">查询</button>
+								</div>
+								<!-- 表格 -->
+								<div class="table-responsive TableShow">						
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th></th>
+												<th>开始时间</th>
+												<th>截止时间</th>
+												<th>发电量(kWh)</th>
+												<th>燃煤量(t)</th>
+												<th>CO2排放量(t)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>精确模型</td>
+												<td class="Month1start"></td>
+												<td class="Month1end"></td>
+												<td class="Month1jinquekwh"></td>
+												<td class="Month1jinquet"></td>
+												<td class="Month1jinqueco2"></td>
+											</tr>
+											<tr>
+												<td>IPCC</td>
+												<td class="Month1start"></td>
+												<td class="Month1end"></td>
+												<td class="Month1IPCCkwh"></td>
+												<td class="Month1IPCCt"></td>
+												<td class="Month1ipccco2"></td>
+											</tr>
+										</tbody>
+									</table>
+									
+									<form id="myform1" enctype="multipart/form-data" class="myform">
+										<input type="button" class="btn btn-default" value="导入每日发电量和燃煤量" id="UploadMonth1"> 
+										<input type="file" style="display: none" id="file1" name="file1" size="40">
+
+									</form>
+
+									<button type="button" class="btn btn-default Month1Out">导出excel</button>
+									
+								</div>
+							</div>
+						</div>
+						<!-- 年 -->
+						<div class="tab-pane fade" id="year1">
+							<div class="CrewMain">
+								<!-- 时间选择 -->
+								<div class="StartEnd">
+									<div class="StartEnd_1">
+										<p>请选择开始时间</p>
+										<input type="month" class="form-control Year1Start">
+									</div>
+									<div class="StartEnd_2">
+										<p>请选择截止时间</p>
+										<input type="month" class="form-control Year1End">
+									</div>
+									<div class="btn-group">
+										<button id="Coal1_value" type="button" class="btn btn-default dropdown-toggle coal_button Year1Coal" data-toggle="dropdown">烟煤<span class="caret"></span></button>
+										<ul class="dropdown-menu coal" role="menu">
+																
+										</ul>
+									</div>
+									<button type="button" class="btn btn-info Year1Query">查询</button>
+								</div>
+								<!-- 表格 -->
+								<div class="table-responsive TableShow">						
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th></th>
+												<th>开始时间</th>
+												<th>截止时间</th>
+												<th>发电量(kWh)</th>
+												<th>燃煤量(t)</th>
+												<th>CO2排放量(t)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>精确模型</td>
+												<td class="Year1start"></td>
+												<td class="Year1end"></td>
+												<td class="Year1jinquekwh"></td>
+												<td class="Year1jinquet"></td>
+												<td class="Year1jinqueco2"></td>
+											</tr>
+											<tr>
+												<td>IPCC</td>
+												<td class="Year1start"></td>
+												<td class="Year1end"></td>
+												<td class="Year1IPCCkwh"></td>
+												<td class="Year1IPCCt"></td>
+												<td class="Year1ipccco2"></td>
+											</tr>
+										</tbody>
+									</table>
+
+									<form id="myform11" enctype="multipart/form-data" class="myform">
+										<input type="button" class="btn btn-default" value="导入每月发电量和燃煤量" id="UploadYear1"> 
+										<input type="file" style="display: none" id="file11" name="file11" size="40">
+									</form>
+									<button type="button" class="btn btn-default Year1Out">导出excel</button>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 机组2 -->
+				<div class="tab-pane fade" id="2">	
+					<!-- 机组2时间选择 -->
+					<div class="TimeChoose">
+						<ul class="nav nav-pills nav-justified TimeList" role="tablist">
+							<li class="active"><a href="#day2" role="tab" data-toggle="tab">日排放报表</a></li>
+							<li><a href="#month2" role="tab" data-toggle="tab">月排放报表</a></li>
+							<li><a href="#year2" role="tab" data-toggle="tab">年排放报表</a></li>
+						</ul>
+					</div>
+					<!-- 机组2正文 -->
+					<div id="myTabContent2" class="tab-content">
+						<!-- 日 -->
+						<div class="tab-pane fade in active" id="day2">
+							<div class="CrewMain">
+								<!-- 时间选择 -->
+								<div class="StartEnd">
+									<div class="StartEnd_1">
+										<p>请输入开始时间</p>
+										<input type="date" class="form-control Daystart2">		
+										<input type="text" class="form-control DaystartTime2" placeholder="14:14:00">
+									</div>
+									<div class="StartEnd_2">
+										<p>请输入结束时间</p>
+										<input type="date" class="form-control Dayend2">		
+										<input type="text" class="form-control DayendTime2" placeholder="14:15:10">
+									</div>
+									<div class="btn-group">
+										<button id="Coal2_value" type="button" class="btn btn-default dropdown-toggle coal_button Day2Coal" data-toggle="dropdown">烟煤<span class="caret"></span></button>
+										<ul class="dropdown-menu coal" role="menu">
+																
+										</ul>
+									</div>
+									<button type="button" class="btn btn-info DayQuery2">查询</button>
+								</div>
+								<!-- 表格 -->
+								<div class="table-responsive TableShow">						
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th></th>
+												<th>开始时间</th>
+												<th>截止时间</th>
+												<th>发电量(kWh)</th>
+												<th>燃煤量(t)</th>
+												<th>CO2排放量(t)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>精确模型</td>
+												<td class="Day2start"></td>
+												<td class="Day2end"></td>
+												<td class="Day2jinquekwh"></td>
+												<td class="Day2jinquet"></td>
+												<td class="Day2jinqueco2"></td>
+											</tr>
+											<tr>
+												<td>IPCC</td>
+												<td class="Day2start"></td>
+												<td class="Day2end"></td>
+												<td class="Day2IPCCkwh"></td>
+												<td class="Day2IPCCt"></td>
+												<td class="Day2IPCCco2"></td>
+											</tr>
+										</tbody>
+									</table>
+									<button type="button" class="btn btn-default pull-right Day2Out">导出excel</button>
+								</div>
+							</div>
+						</div>
+						<!-- 月 -->
+						<div class="tab-pane fade" id="month2">
+							<div class="CrewMain">
+								<!-- 时间选择 -->
+								<div class="StartEnd">
+									<div class="StartEnd_1">
+										<p>请选择开始时间</p>
+										<input type="date" class="form-control Month2Start">
+									</div>
+									<div class="StartEnd_2">
+										<p>请选择截止时间</p>
+										<input type="date" class="form-control Month2End">
+									</div>
+									<div class="btn-group">
+										<button id="Coal2_value" type="button" class="btn btn-default dropdown-toggle coal_button Month2Coal" data-toggle="dropdown">烟煤<span class="caret"></span></button>
+										<ul class="dropdown-menu coal" role="menu">
+																
+										</ul>
+									</div>
+									<button type="button" class="btn btn-info Month2Query">查询</button>
+								</div>
+								<!-- 表格 -->
+								<div class="table-responsive TableShow">						
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th></th>
+												<th>开始时间</th>
+												<th>截止时间</th>
+												<th>发电量(kWh)</th>
+												<th>燃煤量(t)</th>
+												<th>CO2排放量(t)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>精确模型</td>
+												<td class="Month2start"></td>
+												<td class="Month2end"></td>
+												<td class="Month2jinquekwh"></td>
+												<td class="Month2jinquet"></td>
+												<td class="Month2jinqueco2"></td>
+											</tr>
+											<tr>
+												<td>IPCC</td>
+												<td class="Month2start"></td>
+												<td class="Month2end"></td>
+												<td class="Month2IPCCkwh"></td>
+												<td class="Month2IPCCt"></td>
+												<td class="Month2ipccco2"></td>
+											</tr>
+										</tbody>
+									</table>
+									
+									<form id="myform2" enctype="multipart/form-data" class="myform">
+										<input type="button" class="btn btn-default" value="导入每日发电量和燃煤量" id="UploadMonth2"> 
+										<input type="file" style="display: none" id="file2" name="file2" size="40">
+									</form>
+									<button type="button" class="btn btn-default Month2Out">导出excel</button>
+									
+								</div>
+							</div>
+						</div>
+						<!-- 年 -->
+						<div class="tab-pane fade" id="year2">
+							<div class="CrewMain">
+								<!-- 时间选择 -->
+								<div class="StartEnd">
+									<div class="StartEnd_1">
+										<p>请选择开始时间</p>
+										<input type="month" class="form-control Year2Start">
+									</div>
+									<div class="StartEnd_2">
+										<p>请选择截止时间</p>
+										<input type="month" class="form-control Year2End">
+									</div>
+									<div class="btn-group">
+										<button id="Coal2_value" type="button" class="btn btn-default dropdown-toggle coal_button Year2Coal" data-toggle="dropdown">烟煤<span class="caret"></span></button>
+										<ul class="dropdown-menu coal" role="menu">
+																
+										</ul>
+									</div>
+									<button type="button" class="btn btn-info Year2Query">查询</button>
+								</div>
+								<!-- 表格 -->
+								<div class="table-responsive TableShow">						
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th></th>
+												<th>开始时间</th>
+												<th>截止时间</th>
+												<th>发电量(kWh)</th>
+												<th>燃煤量(t)</th>
+												<th>CO2排放量(t)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>精确模型</td>
+												<td class="Year2start"></td>
+												<td class="Year2end"></td>
+												<td class="Year2jinquekwh"></td>
+												<td class="Year2jinquet"></td>
+												<td class="Year2jinqueco2"></td>
+											</tr>
+											<tr>
+												<td>IPCC</td>
+												<td class="Year2start"></td>
+												<td class="Year2end"></td>
+												<td class="Year2IPCCkwh"></td>
+												<td class="Year2IPCCt"></td>
+												<td class="Year2ipccco2"></td>
+											</tr>
+										</tbody>
+									</table>
+									
+									<form id="myform22" enctype="multipart/form-data"  class="myform">
+										<input type="button" class="btn btn-default" value="导入每月发电量和燃煤量" id="UploadYear2"> 
+										<input type="file" style="display: none" id="file22" name="file22" size="40">
+									</form>
+									<button type="button" class="btn btn-default Year2Out">导出excel</button>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 机组3 -->
+				<div class="tab-pane fade" id="3">	
+					<!-- 机组3时间选择 -->
+					<div class="TimeChoose">
+						<ul class="nav nav-pills nav-justified TimeList" role="tablist">
+							<li class="active"><a href="#day3" role="tab" data-toggle="tab">日排放报表</a></li>
+							<li><a href="#month3" role="tab" data-toggle="tab">月排放报表</a></li>
+							<li><a href="#year3" role="tab" data-toggle="tab">年排放报表</a></li>
+						</ul>
+					</div>
+					<!-- 机组3正文 -->
+					<div id="myTabContent3" class="tab-content">
+						<!-- 日 -->
+						<div class="tab-pane fade in active" id="day3">
+							<div class="CrewMain">
+								<!-- 时间选择 -->
+								<div class="StartEnd">
+									<div class="StartEnd_1">
+										<p>请输入开始时间</p>
+										<input type="date" class="form-control Daystart3">		
+										<input type="text" class="form-control DaystartTime3" placeholder="14:14:00">
+									</div>
+									<div class="StartEnd_2">
+										<p>请输入结束时间</p>
+										<input type="date" class="form-control Dayend3">		
+										<input type="text" class="form-control DayendTime3" placeholder="14:15:10">
+									</div>
+									<div class="btn-group">
+										<button id="Coal3_value" type="button" class="btn btn-default dropdown-toggle coal_button Day3Coal" data-toggle="dropdown">烟煤<span class="caret"></span></button>
+										<ul class="dropdown-menu coal" role="menu">
+																
+										</ul>
+									</div>
+									<button type="button" class="btn btn-info DayQuery3">查询</button>
+								</div>
+								<!-- 表格 -->
+								<div class="table-responsive TableShow">						
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th></th>
+												<th>开始时间</th>
+												<th>截止时间</th>
+												<th>发电量(kWh)</th>
+												<th>燃煤量(t)</th>
+												<th>CO2排放量(t)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>精确模型</td>
+												<td class="Day3start"></td>
+												<td class="Day3end"></td>
+												<td class="Day3jinquekwh"></td>
+												<td class="Day3jinquet"></td>
+												<td class="Day3jinqueco2"></td>
+											</tr>
+											<tr>
+												<td>IPCC</td>
+												<td class="Day3start"></td>
+												<td class="Day3end"></td>
+												<td class="Day3IPCCkwh"></td>
+												<td class="Day3IPCCt"></td>
+												<td class="Day3IPCCco2"></td>
+											</tr>
+										</tbody>
+									</table>
+									<button type="button" class="btn btn-default pull-right Day3Out">导出excel</button>
+								</div>
+							</div>
+						</div>
+						<!-- 月 -->
+						<div class="tab-pane fade" id="month3">
+							<div class="CrewMain">
+								<!-- 时间选择 -->
+								<div class="StartEnd">
+									<div class="StartEnd_1">
+										<p>请选择开始时间</p>
+										<input type="date" class="form-control Month3Start">
+									</div>
+									<div class="StartEnd_2">
+										<p>请选择截止时间</p>
+										<input type="date" class="form-control Month3End">
+									</div>
+									<div class="btn-group">
+										<button id="Coal3_value" type="button" class="btn btn-default dropdown-toggle coal_button Month3Coal" data-toggle="dropdown">烟煤<span class="caret"></span></button>
+										<ul class="dropdown-menu coal" role="menu">
+																
+										</ul>
+									</div>
+									<button type="button" class="btn btn-info Month3Query">查询</button>
+								</div>
+								<!-- 表格 -->
+								<div class="table-responsive TableShow">						
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th></th>
+												<th>开始时间</th>
+												<th>截止时间</th>
+												<th>发电量(kWh)</th>
+												<th>燃煤量(t)</th>
+												<th>CO2排放量(t)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>精确模型</td>
+												<td class="Month3start"></td>
+												<td class="Month3end"></td>
+												<td class="Month3jinquekwh"></td>
+												<td class="Month3jinquet"></td>
+												<td class="Month3jinqueco2"></td>
+											</tr>
+											<tr>
+												<td>IPCC</td>
+												<td class="Month3start"></td>
+												<td class="Month3end"></td>
+												<td class="Month3IPCCkwh"></td>
+												<td class="Month3IPCCt"></td>
+												<td class="Month3ipccco2"></td>
+											</tr>
+										</tbody>
+									</table>
+								
+									<form id="myform3" enctype="multipart/form-data" class="myform">
+										<input type="button" class="btn btn-default" value="导入每日发电量和燃煤量" id="UploadMonth3"> 
+										<input type="file" style="display: none" id="file3" name="file3" size="40">
+									</form>
+									<button type="button" class="btn btn-default Month3Out">导出excel</button>
+									
+								</div>
+							</div>
+						</div>
+						<!-- 年 -->
+						<div class="tab-pane fade" id="year3">
+							<div class="CrewMain">
+								<!-- 时间选择 -->
+								<div class="StartEnd">
+									<div class="StartEnd_1">
+										<p>请选择开始时间</p>
+										<input type="month" class="form-control Year3Start">
+									</div>
+									<div class="StartEnd_2">
+										<p>请选择截止时间</p>
+										<input type="month" class="form-control Year3End">
+									</div>
+									<div class="btn-group">
+										<button id="Coal3_value" type="button" class="btn btn-default dropdown-toggle coal_button Year3Coal" data-toggle="dropdown">烟煤<span class="caret"></span></button>
+										<ul class="dropdown-menu coal" role="menu">
+																
+										</ul>
+									</div>
+									<button type="button" class="btn btn-info Year3Query">查询</button>
+								</div>
+								<!-- 表格 -->
+								<div class="table-responsive TableShow">						
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th></th>
+												<th>开始时间</th>
+												<th>截止时间</th>
+												<th>发电量(kWh)</th>
+												<th>燃煤量(t)</th>
+												<th>CO2排放量(t)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>精确模型</td>
+												<td class="Year3start"></td>
+												<td class="Year3end"></td>
+												<td class="Year3jinquekwh"></td>
+												<td class="Year3jinquet"></td>
+												<td class="Year3jinqueco2"></td>
+											</tr>
+											<tr>
+												<td>IPCC</td>
+												<td class="Year3start"></td>
+												<td class="Year3end"></td>
+												<td class="Year3IPCCkwh"></td>
+												<td class="Year3IPCCt"></td>
+												<td class="Year3ipccco2"></td>
+											</tr>
+										</tbody>
+									</table>
+									
+									<form id="myform33" enctype="multipart/form-data" class="myform">
+										<input type="button" class="btn btn-default" value="导入每月发电量和燃煤量" id="UploadYear3"> 
+										<input type="file" style="display: none" id="file33" name="file33" size="40">
+									</form>
+									<button type="button" class="btn btn-default Year3Out">导出excel</button>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 机组4 -->
+				<div class="tab-pane fade" id="4">	
+					<!-- 机组4时间选择 -->
+					<div class="TimeChoose">
+						<ul class="nav nav-pills nav-justified TimeList" role="tablist">
+							<li class="active"><a href="#day4" role="tab" data-toggle="tab">日排放报表</a></li>
+							<li><a href="#month4" role="tab" data-toggle="tab">月排放报表</a></li>
+							<li><a href="#year4" role="tab" data-toggle="tab">年排放报表</a></li>
+						</ul>
+					</div>
+					<!-- 机组4正文 -->
+					<div id="myTabContent4" class="tab-content">
+						<!-- 日 -->
+						<div class="tab-pane fade in active" id="day4">
+							<div class="CrewMain">
+								<!-- 时间选择 -->
+								<div class="StartEnd">
+									<div class="StartEnd_1">
+										<p>请输入开始时间</p>
+										<input type="date" class="form-control Daystart4">		
+										<input type="text" class="form-control DaystartTime4" placeholder="14:14:00">
+									</div>
+									<div class="StartEnd_2">
+										<p>请输入结束时间</p>
+										<input type="date" class="form-control Dayend4">		
+										<input type="text" class="form-control DayendTime4" placeholder="14:15:10">
+									</div>
+									<div class="btn-group">
+										<button id="Coal4_value" type="button" class="btn btn-default dropdown-toggle coal_button Day4Coal" data-toggle="dropdown">烟煤<span class="caret"></span></button>
+										<ul class="dropdown-menu coal" role="menu">
+																
+										</ul>
+									</div>
+									<button type="button" class="btn btn-info DayQuery4">查询</button>
+								</div>
+								<!-- 表格 -->
+								<div class="table-responsive TableShow">						
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th></th>
+												<th>开始时间</th>
+												<th>截止时间</th>
+												<th>发电量(kWh)</th>
+												<th>燃煤量(t)</th>
+												<th>CO2排放量(t)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>精确模型</td>
+												<td class="Day4start"></td>
+												<td class="Day4end"></td>
+												<td class="Day4jinquekwh"></td>
+												<td class="Day4jinquet"></td>
+												<td class="Day4jinqueco2"></td>
+											</tr>
+											<tr>
+												<td>IPCC</td>
+												<td class="Day4start"></td>
+												<td class="Day4end"></td>
+												<td class="Day4IPCCkwh"></td>
+												<td class="Day4IPCCt"></td>
+												<td class="Day4IPCCco2"></td>
+											</tr>
+										</tbody>
+									</table>
+									<button type="button" class="btn btn-default pull-right Day4Out">导出excel</button>
+								</div>
+							</div>
+						</div>
+						<!-- 月 -->
+						<div class="tab-pane fade" id="month4">
+							<div class="CrewMain">
+								<!-- 时间选择 -->
+								<div class="StartEnd">
+									<div class="StartEnd_1">
+										<p>请选择开始时间</p>
+										<input type="date" class="form-control Month4Start">
+									</div>
+									<div class="StartEnd_2">
+										<p>请选择截止时间</p>
+										<input type="date" class="form-control Month4End">
+									</div>
+									<div class="btn-group">
+										<button id="Coal4_value" type="button" class="btn btn-default dropdown-toggle coal_button Month4Coal" data-toggle="dropdown">烟煤<span class="caret"></span></button>
+										<ul class="dropdown-menu coal" role="menu">
+																
+										</ul>
+									</div>
+									<button type="button" class="btn btn-info Month4Query">查询</button>
+								</div>
+								<!-- 表格 -->
+								<div class="table-responsive TableShow">						
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th></th>
+												<th>开始时间</th>
+												<th>截止时间</th>
+												<th>发电量(kWh)</th>
+												<th>燃煤量(t)</th>
+												<th>CO2排放量(t)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>精确模型</td>
+												<td class="Month4start"></td>
+												<td class="Month4end"></td>
+												<td class="Month4jinquekwh"></td>
+												<td class="Month4jinquet"></td>
+												<td class="Month4jinqueco2"></td>
+											</tr>
+											<tr>
+												<td>IPCC</td>
+												<td class="Month4start">></td>
+												<td class="Month4end"></td>
+												<td class="Month4IPCCkwh"></td>
+												<td class="Month4IPCCt"></td>
+												<td class="Month4ipccco2"></td>
+											</tr>
+										</tbody>
+									</table>
+							
+									<form id="myform4" enctype="multipart/form-data" class="myform">
+										<input type="button" class="btn btn-default" value="导入每日发电量和燃煤量" id="UploadMonth4"> 
+										<input type="file" style="display: none" id="file4" name="file4" size="40">
+									</form>
+									<button type="button" class="btn btn-default Month4Out">导出excel</button>
+									
+								</div>
+							</div>
+						</div>
+						<!-- 年 -->
+						<div class="tab-pane fade" id="year4">
+							<div class="CrewMain">
+								<!-- 时间选择 -->
+								<div class="StartEnd">
+									<div class="StartEnd_1">
+										<p>请选择开始时间</p>
+										<input type="month" class="form-control Year4Start">
+									</div>
+									<div class="StartEnd_2">
+										<p>请选择截止时间</p>
+										<input type="month" class="form-control Year4End">
+									</div>
+									<div class="btn-group">
+										<button id="Coal4_value" type="button" class="btn btn-default dropdown-toggle coal_button Year4Coal" data-toggle="dropdown">烟煤<span class="caret"></span></button>
+										<ul class="dropdown-menu coal" role="menu">
+																
+										</ul>
+									</div>
+									<button type="button" class="btn btn-info Year4Query">查询</button>
+								</div>
+								<!-- 表格 -->
+								<div class="table-responsive TableShow">						
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th></th>
+												<th>开始时间</th>
+												<th>截止时间</th>
+												<th>发电量(kWh)</th>
+												<th>燃煤量(t)</th>
+												<th>CO2排放量(t)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>精确模型</td>
+												<td class="Year4start"></td>
+												<td class="Year4end"></td>
+												<td class="Year4jinquekwh"></td>
+												<td class="Year4jinquet"></td>
+												<td class="Year4jinqueco2"></td>
+											</tr>
+											<tr>
+												<td>IPCC</td>
+												<td class="Year4start"></td>
+												<td class="Year4end"></td>
+												<td class="Year4IPCCkwh"></td>
+												<td class="Year4IPCCt"></td>
+												<td class="Year4ipccco2"></td>
+											</tr>
+										</tbody>
+									</table>
+									
+									<form id="myform44" enctype="multipart/form-data" class="myform">
+										<input type="button" class="btn btn-default" value="导入每月发电量和燃煤量" id="UploadYear4"> 
+										<input type="file" style="display: none" id="file44" name="file44" size="40">
+									</form>
+									<button type="button" class="btn btn-default Year4Out">导出excel</button>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>	
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/publicDom.js"></script>
+	<script type="text/javascript" src="js/EmissionReport.js"></script>
+	<script type="text/javascript" src="js/tableExport.js"></script>
+	<script type="text/javascript" src="js/highcharts.js"></script>
+	<script type="text/javascript" src="js/exporting.js"></script>
+	<script type="text/javascript" src="js/layer.js"></script>
+</body>
+</html>
